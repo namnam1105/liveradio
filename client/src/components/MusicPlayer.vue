@@ -7,7 +7,6 @@ import { onMounted, watch, getCurrentInstance, ref  } from 'vue';
 import { state } from '@/socket';
 
 
-
 let curSong = '';
 // ok so here is the music update to actually sync between clients
 watch(state, (newsatae) => {

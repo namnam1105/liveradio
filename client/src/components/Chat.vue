@@ -1,13 +1,13 @@
 <template>
-    <div id="chatComp">
+    <div id="chatComp" 	>
         <ul id="messages">
             <li id="li" v-for="(msg, index) in state.messages" :key="index">{{msg}}</li>
         </ul>
     </div>
 </template>
 
-<script lang="ts" setup>
-import { getCurrentInstance, onMounted, watch } from 'vue';
+<script lang="js" setup>
+import { onMounted, watch, getCurrentInstance } from 'vue';
 import { state } from "@/socket";
 import eventBus from "@/eventBus";
 
@@ -17,16 +17,23 @@ import eventBus from "@/eventBus";
 // Cast eventBus to the correct type
 
 
+const chatDiv = document.getElementById('chatComp')
 const needUpdate = () => {
-    const instance = getCurrentInstance();
-    instance.proxy.$forceUpdate();
+  getCurrentInstance().proxy.$forceUpdate();
+    if (chatDiv.value) {
+        chatDiv.value.scrollTop = chatDiv.value.scrollHeight;
+    }
 }
+
 
 onMounted(() => {
     try {
         eventBus.on('update-chat', needUpdate);
     } catch (error) {
         console.warn('Failed to listen to update-chat event:', error);
+    }
+    if (chatDiv.value) {
+        chatDiv.value.scrollTop = chatDiv.value.scrollHeight;
     }
 });
 

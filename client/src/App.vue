@@ -6,10 +6,13 @@ import ConnectionManager from './components/ConnectionManager.vue';
 import MusicInfo from './components/MusicInfo.vue';
 import MusicVisualizer from './components/MusicVisualizer.vue';
 import MusicPlayer from './components/MusicPlayer.vue';
+
+
+
 </script>
 
 <template>
-  <Chat />
+  <Chat/>
   <ChatInput/>
   <ConnectionState/>
   <ConnectionManager/>
