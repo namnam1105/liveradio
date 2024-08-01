@@ -28,17 +28,21 @@ def recursive_loopthru():
                 socketio.emit('new_music', {'filename': i, 'length': get_mp3_length(f'./music/{i}'), 'timestamp': iterator})
                 iterator += 1
                 time.sleep(1)
-            time.sleep(2)
-    time.sleep(5)
+
     recursive_loopthru()
 
 @app.route('/')
 def index():
-    return "<h1>hi there! this is a backend server so this is the only text which is also just for testing</h1>"
+    return "<h1>hi there! this is a backend server so this is the only text which is also just for testing</h1>" \
+            '<a href="http://untitlednam.tplinkdns.com:5173">Go back</a>'
+
+@app.route('/jpgs/<filename>')
+def send_image(filename):
+    return send_from_directory('./jpgs', filename, mimetype='image/jpeg')
 
 @app.route('/music/<filename>')
 def send_music(filename):
-    return send_from_directory('./music', filename, mimetype='audio/mpeg')
+    return send_from_directory('./music', filename)
 
 @socketio.on('connect')
 def connected():

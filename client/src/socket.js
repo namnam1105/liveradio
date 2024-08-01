@@ -16,7 +16,10 @@ export const state = reactive({
 });
 
 const songTable = {
-  "cats": ["The Living Tombstone", "Cats"]
+  "cats": ["The Living Tombstone", "Cats"],
+  "ladaturbospace": ["Lida", "ЛАДА ТУРБО СПЕЙС"],
+  "gangbang": ["Lida", "Гэнг Бэнг"],
+  "jackass": ["CMH, Joost", "Jackass"],
 }
 
 const URL = process.env.NODE_ENV === "production" ? undefined : "http://untitlednam.tplinkdns.com:3000/";

@@ -32,9 +32,11 @@ function updateVolume() {
     state.volume = volume.value;
 }
 watch(state, (newState)=>{
-    document.getElementById('songCover').src = "../assets/"+newState.currentSong+".jpg"
+    document.getElementById('songCover').src = "http://untitlednam.tplinkdns.com:3000/jpgs/"+newState.currentSong+".jpg"
     document.getElementById('lengthP').innerHTML = formatSeconds(newState.elapsedTime)
     document.getElementById('lengthEnd').innerHTML = formatSeconds(Math.floor(newState.duration))
+    const percentage = newState.elapsedTime / newState.duration * 100;
+    document.documentElement.style.setProperty('--before-width', `${percentage}%`) 
 })
 
 
@@ -42,6 +44,10 @@ watch(state, (newState)=>{
 </script>
 
 <style>
+    :root {
+        --before-width: 0%;
+    }
+
     .songContainer {
         position: absolute;
         right: 30em;
@@ -96,16 +102,14 @@ watch(state, (newState)=>{
         border-radius: 10px;
         height: 5px;
         transition: all 300ms ease-in-out;
-        width: 0;
+        width: var(--before-width);
         display: flex;
         align-items: center;
         justify-content: center;
         color: black;
     }
 
-    #length:hover::before{
-        width: 30em;
-    }
+
     #lengthP {
         box-sizing: inherit;
         position: absolute;
@@ -173,23 +177,14 @@ watch(state, (newState)=>{
 
     @media (max-width: 1400px) {
         .songContainer {
-            width: 20em;
             right: 10em;
             top: 10em;
         }
+
         #length {
-            width: 20em;
-            top: 21em;
+            top: 31em;
         }
-        #lengthP {
-            transform: translate(-500%, 50%);
-        }
-        #lengthEnd {
-            transform: translate(400%, 50%);
-        }
-        #volume {
-            width: 20em;
-        }
+
     }
     @media (min-width: 601px) and (max-width: 1024px) {
         .songContainer {
