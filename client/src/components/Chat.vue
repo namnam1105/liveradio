@@ -1,5 +1,3 @@
-<!-- eslint-disable vue/multi-word-component-names -->
-<!-- eslint-disable vue/require-v-for-key -->
 <template>
     <div id="chatComp">
         <ul id="messages">
@@ -8,10 +6,16 @@
     </div>
 </template>
 
-<script lang="js" setup>
+<script lang="ts" setup>
 import { getCurrentInstance, onMounted, watch } from 'vue';
 import { state } from "@/socket";
 import eventBus from "@/eventBus";
+
+// Import the EventEmitter type from Node.js or a similar library
+
+
+// Cast eventBus to the correct type
+
 
 const needUpdate = () => {
     const instance = getCurrentInstance();
@@ -19,30 +23,17 @@ const needUpdate = () => {
 }
 
 onMounted(() => {
-  eventBus.on('update-chat', needUpdate);
+    try {
+        eventBus.on('update-chat', needUpdate);
+    } catch (error) {
+        console.warn('Failed to listen to update-chat event:', error);
+    }
 });
 
 watch(() => state.messages, ()=>{
     needUpdate();
 })
-/*
-
-       /\         nam@fedoralinux
-      /  \        os     Arch Linux
-     /\   \       host   B550M AORUS ELITE -CF
-    /      \      kernel 6.10.1-arch1-1
-   /   ,,   \     uptime 4h 44m
-  /   |  |  -\    pkgs   1163
- /_-''    ''-_\   memory 10167M / 32019M
-
-
-*/
-
-
 </script>
-
-
-
 
 <style scoped>
 #chatComp{

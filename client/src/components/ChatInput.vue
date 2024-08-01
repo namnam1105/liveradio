@@ -13,7 +13,8 @@ import { socket } from "@/socket";
 import eventBus from '@/eventBus';
 
 const updateChatComponent = () => {
-  eventBus.emit('update-chat');
+    try {eventBus.emit('update-chat');} catch (err) { console.error(err); }
+  
 };
 
 function onSubmit() {

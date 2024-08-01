@@ -3,6 +3,9 @@ import Chat from './components/Chat.vue';
 import ChatInput from './components/ChatInput.vue';
 import ConnectionState from './components/ConnectionState.vue';
 import ConnectionManager from './components/ConnectionManager.vue';
+import MusicInfo from './components/MusicInfo.vue';
+import MusicVisualizer from './components/MusicVisualizer.vue';
+import MusicPlayer from './components/MusicPlayer.vue';
 </script>
 
 <template>
@@ -10,6 +13,9 @@ import ConnectionManager from './components/ConnectionManager.vue';
   <ChatInput/>
   <ConnectionState/>
   <ConnectionManager/>
+  <MusicInfo/>
+  <MusicVisualizer/>
+  <MusicPlayer/>
 </template>
 
 <style scoped>
