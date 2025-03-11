@@ -20,7 +20,7 @@ const songTable = {
   "ladaturbospace": ["Lida", "ЛАДА ТУРБО СПЕЙС"],
 }
 
-const URL = process.env.NODE_ENV === "production" ? undefined : "http://untitlednam.tplinkdns.com:3000/";
+const URL = process.env.NODE_ENV === "production" ? undefined : "python server";
 
 export const socket = io(URL);
 
