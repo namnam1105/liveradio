@@ -17,7 +17,7 @@ def get_mp3_length(filename):
     return audio.info.length
 
 app = Flask(__name__)
-socketio = SocketIO(app, cors_allowed_origins=['http://untitlednam.tplinkdns.com:5173'], async_mode='eventlet')
+socketio = SocketIO(app, cors_allowed_origins=['vue server url'], async_mode='eventlet')
 
 def recursive_loopthru():
     for i in os.listdir('./music'):
@@ -34,7 +34,6 @@ def recursive_loopthru():
 @app.route('/')
 def index():
     return "<h1>hi there! this is a backend server so this is the only text which is also just for testing</h1>" \
-            '<a href="http://untitlednam.tplinkdns.com:5173">Go back</a>'
 
 @app.route('/jpgs/<filename>')
 def send_image(filename):
